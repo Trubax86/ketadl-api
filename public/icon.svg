@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Psychedelic gradient -->
+    <linearGradient id="psychGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff00ff"/>
+      <stop offset="25%" style="stop-color:#00ffff"/>
+      <stop offset="50%" style="stop-color:#ff00aa"/>
+      <stop offset="75%" style="stop-color:#aa00ff"/>
+      <stop offset="100%" style="stop-color:#00ffaa"/>
+    </linearGradient>
+    
+    <!-- Neon glow -->
+    <filter id="neonGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="blur1"/>
+      <feGaussianBlur stdDeviation="12" result="blur2"/>
+      <feGaussianBlur stdDeviation="18" result="blur3"/>
+      <feMerge>
+        <feMergeNode in="blur3"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Trippy background gradient -->
+    <radialGradient id="trippy" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color:#1a0033"/>
+      <stop offset="40%" style="stop-color:#0d001a"/>
+      <stop offset="100%" style="stop-color:#000000"/>
+    </radialGradient>
+    
+    <!-- K letter gradient -->
+    <linearGradient id="kGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff00ff"/>
+      <stop offset="33%" style="stop-color:#00ffff"/>
+      <stop offset="66%" style="stop-color:#ffff00"/>
+      <stop offset="100%" style="stop-color:#ff00ff"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Dark background -->
+  <rect x="0" y="0" width="512" height="512" rx="100" ry="100" fill="url(#trippy)"/>
+  
+  <!-- Psychedelic rings -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#ff00ff" stroke-width="2" opacity="0.3"/>
+  <circle cx="256" cy="256" r="190" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.4"/>
+  <circle cx="256" cy="256" r="160" fill="none" stroke="#ff00aa" stroke-width="2" opacity="0.5"/>
+  <circle cx="256" cy="256" r="130" fill="none" stroke="#aa00ff" stroke-width="3" opacity="0.6"/>
+  
+  <!-- Trippy spiral lines -->
+  <g opacity="0.2" stroke="url(#psychGrad)" stroke-width="1" fill="none">
+    <path d="M256 36 Q400 150 256 256 Q112 362 256 476"/>
+    <path d="M36 256 Q150 112 256 256 Q362 400 476 256"/>
+    <path d="M80 80 Q256 180 432 432"/>
+    <path d="M432 80 Q256 180 80 432"/>
+  </g>
+  
+  <!-- Main K letter - bold and psychedelic -->
+  <g filter="url(#neonGlow)">
+    <!-- K vertical bar -->
+    <path d="M160 120 L160 392" stroke="url(#kGrad)" stroke-width="45" stroke-linecap="round"/>
+    
+    <!-- K diagonal top -->
+    <path d="M175 256 L320 120" stroke="url(#kGrad)" stroke-width="45" stroke-linecap="round"/>
+    
+    <!-- K diagonal bottom -->
+    <path d="M175 256 L340 392" stroke="url(#kGrad)" stroke-width="45" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Download arrow integrated -->
+  <g filter="url(#neonGlow)" opacity="0.9">
+    <path d="M400 280 L400 380" stroke="#00ffff" stroke-width="20" stroke-linecap="round"/>
+    <path d="M365 345 L400 385 L435 345" stroke="#00ffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  
+  <!-- Sparkles/stars -->
+  <g fill="#ffffff" filter="url(#neonGlow)">
+    <circle cx="90" cy="90" r="6"/>
+    <circle cx="420" cy="80" r="5"/>
+    <circle cx="70" cy="400" r="4"/>
+    <circle cx="450" cy="450" r="7"/>
+    <circle cx="256" cy="60" r="5"/>
+    <circle cx="60" cy="256" r="4"/>
+  </g>
+  
+  <!-- Floating particles -->
+  <g fill="#ff00ff" opacity="0.7">
+    <circle cx="120" cy="180" r="3"/>
+    <circle cx="380" cy="150" r="4"/>
+    <circle cx="100" cy="320" r="3"/>
+    <circle cx="420" cy="280" r="3"/>
+  </g>
+  <g fill="#00ffff" opacity="0.7">
+    <circle cx="150" cy="420" r="4"/>
+    <circle cx="350" cy="450" r="3"/>
+    <circle cx="450" cy="180" r="3"/>
+  </g>
+</svg>
