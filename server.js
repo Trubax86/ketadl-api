@@ -28,6 +28,22 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Debug endpoint to check yt-dlp
+app.get('/api/debug', async (req, res) => {
+  const { exec } = require('child_process');
+  
+  exec('which yt-dlp && yt-dlp --version', (error, stdout, stderr) => {
+    res.json({
+      ytdlpFound: !error,
+      stdout: stdout.trim(),
+      stderr: stderr.trim(),
+      error: error ? error.message : null,
+      nodeVersion: process.version,
+      platform: process.platform,
+    });
+  });
+});
+
 // Extract video info and available formats
 app.get('/api/extract', async (req, res) => {
   const { videoId } = req.query;
@@ -40,12 +56,14 @@ app.get('/api/extract', async (req, res) => {
     const url = `https://www.youtube.com/watch?v=${videoId}`;
     
     console.log('Extracting with yt-dlp:', videoId);
+    console.log('yt-dlp path:', '/usr/bin/yt-dlp');
     
     const info = await ytdlp(url, {
       dumpSingleJson: true,
       noCheckCertificates: true,
       noWarnings: true,
       preferFreeFormats: true,
+      addHeader: ['User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'],
     });
     
     // Audio formats
