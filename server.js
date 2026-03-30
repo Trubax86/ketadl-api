@@ -3,7 +3,10 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
-const ytdlp = require('yt-dlp-exec');
+const ytdlpModule = require('yt-dlp-exec');
+
+// Configure yt-dlp path - try common locations
+const ytdlp = ytdlpModule.create('/usr/bin/yt-dlp');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
